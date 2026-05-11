@@ -1057,6 +1057,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Player1Button",
+                    "type": "Button",
+                    "id": "7427b6d3-fb85-4f3b-985e-f3f2936f88c2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Player2Button",
+                    "type": "Button",
+                    "id": "2c9f989d-b354-4b7f-9f2b-3cb8f2eb06ca",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1222,6 +1240,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "2ButtonLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88ac0966-f6cd-48f4-8e53-f2e789bdb714",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player1Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19b32134-b698-4a58-a1c6-34415f11d19a",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2Button",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
