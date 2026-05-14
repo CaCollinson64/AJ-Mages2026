@@ -36,7 +36,13 @@ MonoBehaviour:
     m_Modified: 0
     m_ErrorMessage: 
     m_UserModificationsEntityId:
+<<<<<<< Updated upstream
       m_Data: -978
     m_OriginalEntityId:
       m_Data: -980
+=======
+      m_Data: -958
+    m_OriginalEntityId:
+      m_Data: -960
+>>>>>>> Stashed changes
   m_LoadAssets: 0

@@ -1,7 +1,10 @@
 {
   "dependencies": {
+<<<<<<< Updated upstream
     "com.unity.ai.assistant": "2.7.0-pre.3",
     "com.unity.ai.inference": "2.6.1",
+=======
+>>>>>>> Stashed changes
     "com.unity.multiplayer.center": "1.0.1",
     "com.unity.modules.accessibility": "1.0.0",
     "com.unity.modules.adaptiveperformance": "1.0.0",
