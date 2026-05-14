@@ -1,0 +1,196 @@
+:root {
+  --bg-color: #111;
+  --road-color: #333;
+  --river-color: #1a4b8c;
+  --ui-bg: rgba(0, 0, 50, 0.85);
+  --ui-border: #00ffff;
+  --ui-glow: rgba(0, 255, 255, 0.4);
+  --text-color: #fff;
+  --text-selected: #ffd700;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#game-container {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+#ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.player-ui {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.jrpg-menu {
+  display: none;
+  position: absolute;
+  background-color: var(--ui-bg);
+  background-color: var(--ui-bg);
+  border: 4px solid var(--ui-border);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: inset 0 0 10px var(--ui-glow), 0 0 20px var(--ui-glow);
+  min-width: 150px;
+}
+
+.jrpg-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.jrpg-menu li {
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.jrpg-menu li.selected {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.3) 0%, transparent 100%);
+  color: var(--text-selected);
+  text-shadow: 0 0 8px var(--text-selected);
+  position: relative;
+}
+
+.jrpg-menu li.selected::before {
+  content: '▶';
+  position: absolute;
+  left: -5px;
+  color: var(--ui-border);
+}
+
+.status-bar {
+  position: absolute;
+  top: 10px;
+  background-color: var(--ui-bg);
+  border: 2px solid var(--ui-border);
+  box-shadow: 0 0 15px var(--ui-glow);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.status-row {
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.sp-value { color: #00ff00; }
+.mp-value { color: #0088ff; }
+
+/* Positioning */
+#p1-ui .status-bar { left: 10px; text-align: left; }
+#p1-ui .root-menu { bottom: 20px; left: 20px; }
+#p1-ui .magic-menu { bottom: 20px; left: 190px; }
+
+#p2-ui .status-bar { right: 10px; text-align: right; }
+#p2-ui .root-menu { bottom: 20px; right: 20px; }
+#p2-ui .magic-menu { bottom: 20px; right: 190px; }
+
+.join-overlay, .game-over-overlay {
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  background-color: var(--ui-bg);
+  border: 4px solid var(--ui-border);
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  animation: blink 1.5s infinite;
+}
+
+.game-over-overlay {
+  animation: none;
+  color: #ff3333;
+  bottom: 50%;
+  transform: translateY(50%);
+}
+
+#p1-join, #p1-gameover { left: 20px; }
+#p2-join, #p2-gameover { right: 20px; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.magic-menu.jrpg-menu {
+  min-width: 250px;
+}
+
+.title-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 100;
+}
+
+.title-overlay h1 {
+  font-size: 48px;
+  color: #00ffff;
+  text-shadow: 0 0 10px #0088ff, 0 0 20px #000;
+  margin-bottom: 50px;
+  line-height: 1.2;
+}
+
+.title-overlay .instructions p {
+  font-size: 14px;
+  color: var(--ui-border);
+  text-shadow: 0 0 5px var(--ui-border);
+  animation: blink 1.5s infinite;
+  margin: 15px 0;
+  line-height: 1.5;
+}
+
+.scanlines {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0,0,0,0.2) 50%,
+    rgba(0,0,0,0.2)
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 50;
+}

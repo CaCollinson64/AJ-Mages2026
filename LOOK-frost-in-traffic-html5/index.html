@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frost in Traffic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="game-container">
+      <canvas id="game-canvas" width="1280" height="720"></canvas>
+      <div id="ui-layer">
+        
+        <!-- CRT SCANLINES -->
+        <div class="scanlines"></div>
+
+        <!-- TITLE SCREEN -->
+        <div id="title-screen" class="title-overlay">
+            <h1>FROST IN TRAFFIC</h1>
+            <div class="instructions">
+                <p>P1 (WASD): PRESS SPACE TO START</p>
+                <p>P2 (ARROWS): PRESS ENTER TO START</p>
+            </div>
+        </div>
+
+        <!-- P1 UI (Left) -->
+        <div id="p1-ui" class="player-ui" style="display: none;">
+          <div id="p1-join" class="join-overlay">PRESS SPACE TO JOIN</div>
+          <div id="p1-gameover" class="game-over-overlay">GAME OVER</div>
+          <div class="status-bar" id="p1-status">
+            <div class="status-row" style="color: #00ffff">P1 Score: <span class="score-display">0</span></div>
+            <div class="status-row" style="color: #ff3333">Lives: <span class="lives-display">3</span></div>
+            <div class="status-row">SP: <span class="sp-display sp-value">5/5</span></div>
+            <div class="status-row">MP: <span class="mp-display mp-value">10/10</span></div>
+          </div>
+
+          <div class="root-menu jrpg-menu">
+            <ul>
+              <li data-action="move" class="selected">Move</li>
+              <li data-action="magic">Magic</li>
+              <li data-action="suicide">Suicide Magic</li>
+            </ul>
+          </div>
+
+          <div class="magic-menu jrpg-menu">
+            <ul>
+              <li data-action="blizzard_1" class="selected">Blizzard I (1MP)</li>
+              <li data-action="blizzard_2">Blizzard II (2MP)</li>
+              <li data-action="blizzard_3">Blizzard III (4MP)</li>
+              <li data-action="float">Float (5MP)</li>
+              <li data-action="back">Back</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- P2 UI (Right) -->
+        <div id="p2-ui" class="player-ui" style="display: none;">
+          <div id="p2-join" class="join-overlay">PRESS ENTER TO JOIN</div>
+          <div id="p2-gameover" class="game-over-overlay">GAME OVER</div>
+          <div class="status-bar" id="p2-status">
+            <div class="status-row" style="color: #ffaa00">P2 Score: <span class="score-display">0</span></div>
+            <div class="status-row" style="color: #ff3333">Lives: <span class="lives-display">3</span></div>
+            <div class="status-row">SP: <span class="sp-display sp-value">5/5</span></div>
+            <div class="status-row">MP: <span class="mp-display mp-value">10/10</span></div>
+          </div>
+
+          <div class="root-menu jrpg-menu">
+            <ul>
+              <li data-action="move" class="selected">Move</li>
+              <li data-action="magic">Magic</li>
+              <li data-action="suicide">Suicide Magic</li>
+            </ul>
+          </div>
+
+          <div class="magic-menu jrpg-menu">
+            <ul>
+              <li data-action="blizzard_1" class="selected">Blizzard I (1MP)</li>
+              <li data-action="blizzard_2">Blizzard II (2MP)</li>
+              <li data-action="blizzard_3">Blizzard III (4MP)</li>
+              <li data-action="float">Float (5MP)</li>
+              <li data-action="back">Back</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
