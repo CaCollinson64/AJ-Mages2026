@@ -36,22 +36,18 @@ public class PlayerController : MonoBehaviour
         float xValue = vectorInput.x;
         float yValue = vectorInput.y;
         float combined = Mathf.Abs(yValue) - Mathf.Abs(xValue);
-        if (combined >= 0)
+        if (combined > 0)
         {
             if (yValue > 0)
             {
                 return majorInput.move;
             }
-            else if (yValue < 0)
+            else
             {
                 return majorInput.shield;
             }
-            else
-            {
-                return majorInput.none;
-            }
         }
-        else
+        else if (combined < 0)
         {
             if (xValue > 0)
             {
@@ -62,25 +58,26 @@ public class PlayerController : MonoBehaviour
                 return majorInput.item;
             }
         }
+        return majorInput.none;
     }
 
-    private minorInput GetMinorInput(Vector2 vectorInput)
+    private minorInput GetMinorInput(Vector2 vectorInput, minorInput oldInput)
     {
         float xValue = vectorInput.x;
         float yValue = vectorInput.y;
         float combined = Mathf.Abs(yValue) - Mathf.Abs(xValue);
-        if (combined >= 0)
+        if (combined > 0)
         {
             if (yValue >= 0)
             {
                 return minorInput.up;
             }
-            else if (yValue < 0)
+            else
             {
                 return minorInput.down;
             }
         }
-        else
+        else if (combined < 0)
         {
             if (xValue > 0)
             {
@@ -91,17 +88,18 @@ public class PlayerController : MonoBehaviour
                 return minorInput.left;
             }
         }
-        return minorInput.up;
+        return oldInput;
     }
 
-    public void On1ButtonLeft(InputValue input)
+    public void On_1ButtonLeft(InputValue input)
     {
-        if (!input.isPressed)
-        { return; }
+
+        Debug.Log(input.isPressed.ToString());
 
         if (didMajorP1)
         {
             sendP1Input.Invoke(p1MajorInput, p1MinorInput);
+            didMajorP1 = false;
         }
         else
         {
@@ -117,10 +115,12 @@ public class PlayerController : MonoBehaviour
         if (!didMajorP1)
         {
             p1MajorInput = GetMajorInput(vectorInput);
+            Debug.Log(p1MajorInput.ToString());
         }
         else
         {
-            p1MinorInput = GetMinorInput(vectorInput);
+            p1MinorInput = GetMinorInput(vectorInput, p1MinorInput);
+            Debug.Log(p1MinorInput.ToString());
         }
     }
 
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            p2MinorInput = GetMinorInput(vectorInput);
+            p2MinorInput = GetMinorInput(vectorInput,p2MinorInput);
         }
     }
 }
