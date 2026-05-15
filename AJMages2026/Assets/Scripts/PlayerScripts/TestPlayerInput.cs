@@ -5,7 +5,7 @@ public class TestPlayerInput : MonoBehaviour
 
     private void Start()
     {
-        gameObject.GetComponent<PlayerController>().sendInput.AddListener(TestOutput);
+        gameObject.GetComponent<PlayerController>().sendP1Input.AddListener(TestOutput);
     }
 
     private void TestOutput(PlayerController.majorInput input1,PlayerController.minorInput input2)
