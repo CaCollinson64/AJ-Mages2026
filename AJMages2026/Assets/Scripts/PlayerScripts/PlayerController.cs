@@ -9,7 +9,10 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     public UnityEvent<majorInput, minorInput> sendP1Input;
+    public UnityEvent<majorInput, minorInput> sendP2Input;
     private majorInput p1MajorInput = majorInput.none;
     private minorInput p1MinorInput = minorInput.up;
     private bool didMajorP1 = false;
@@ -29,6 +32,18 @@ public class PlayerController : MonoBehaviour
     public enum minorInput
     {
         up, down, left, right
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private majorInput GetMajorInput(Vector2 vectorInput)
@@ -107,6 +122,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void On_1ButtonRight(InputValue input)
+    {
+
+        Debug.Log(input.isPressed.ToString());
+
+        if (didMajorP2)
+        {
+            sendP2Input.Invoke(p2MajorInput, p2MinorInput);
+            didMajorP2 = false;
+        }
+        else
+        {
+            didMajorP2 = true;
+        }
+    }
+
     public void OnLeftStick(InputValue input)
     {
         Vector2 vectorInput = input.Get<Vector2>();
@@ -132,10 +163,12 @@ public class PlayerController : MonoBehaviour
         if (!didMajorP2)//Replace with didMajorP2
         {
             p2MajorInput = GetMajorInput(vectorInput);
+            Debug.Log(p2MajorInput.ToString());
         }
         else
         {
             p2MinorInput = GetMinorInput(vectorInput,p2MinorInput);
+            Debug.Log(p2MinorInput.ToString());
         }
     }
 }

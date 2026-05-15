@@ -9,9 +9,10 @@ public class PlayerMoveInput : MonoBehaviour
     private bool _isMoving = false;
     [SerializeField] private float _speed;
 
+
     private void Start()
     {
-        gameObject.GetComponent<PlayerController>().sendP1Input.AddListener(OnReceivedInput);
+        gameObject.GetComponent<PlayerInputHandler>().playerInput.AddListener(DoMovement);
     }
 
     private void MovementChecks()
@@ -65,7 +66,7 @@ public class PlayerMoveInput : MonoBehaviour
         }
     }
 
-    private void OnReceivedInput(PlayerController.majorInput input1, PlayerController.minorInput input2)
+    public void DoMovement(PlayerController.majorInput input1, PlayerController.minorInput input2)
     {
         if (!_isMoving && input1 != PlayerController.majorInput.move)
         {
@@ -79,12 +80,15 @@ public class PlayerMoveInput : MonoBehaviour
             case PlayerController.minorInput.up:
                 _moveDir = Vector2.up;
                 break; 
+
             case PlayerController.minorInput.down:
                 _moveDir = Vector2.down;
                 break;
+
             case PlayerController.minorInput.left: 
                 _moveDir = Vector2.left; 
                 break;
+
             case PlayerController.minorInput.right: 
                 _moveDir = Vector2.right; 
                 break;
