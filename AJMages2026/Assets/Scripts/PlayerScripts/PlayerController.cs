@@ -42,9 +42,13 @@ public class PlayerController : MonoBehaviour
             {
                 return majorInput.move;
             }
-            else
+            else if (yValue < 0)
             {
                 return majorInput.shield;
+            }
+            else
+            {
+                return majorInput.none;
             }
         }
         else
@@ -71,7 +75,7 @@ public class PlayerController : MonoBehaviour
             {
                 return minorInput.up;
             }
-            else
+            else if (yValue < 0)
             {
                 return minorInput.down;
             }
@@ -87,6 +91,7 @@ public class PlayerController : MonoBehaviour
                 return minorInput.left;
             }
         }
+        return minorInput.up;
     }
 
     public void On1ButtonLeft(InputValue input)
@@ -116,7 +121,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             p1MinorInput = GetMinorInput(vectorInput);
-            didMinorP1 = true;
         }
     }
 
@@ -128,12 +132,10 @@ public class PlayerController : MonoBehaviour
         if (!didMajorP2)//Replace with didMajorP2
         {
             p2MajorInput = GetMajorInput(vectorInput);
-            didMajorP2 = true;
         }
         else
         {
             p2MinorInput = GetMinorInput(vectorInput);
-            didMinorP2 = true;
         }
     }
 }
