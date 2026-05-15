@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shield: {fileID: 1355311804}
+  _shieldSprite: {fileID: 1355104689}
 --- !u!1 &1355104687
 GameObject:
   m_ObjectHideFlags: 0
